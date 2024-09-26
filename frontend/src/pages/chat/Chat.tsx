@@ -90,9 +90,9 @@ const Chat = () => {
       appStateContext?.state.chatHistoryLoadingState === ChatHistoryLoadingState.Fail &&
       hideErrorDialog
     ) {
-      let subtitle = `${appStateContext.state.isCosmosDBAvailable.status}. Please contact the site administrator.`
+      let subtitle = `${appStateContext.state.isCosmosDBAvailable.status}. Neem a.u.b. contact op met de chatbot administrator.`
       setErrorMsg({
-        title: 'Chat history is not enabled',
+        title: 'Chat geschiedenis is niet ingeschakeld',
         subtitle: subtitle
       })
       toggleErrorDialog()
@@ -275,7 +275,7 @@ const Chat = () => {
     } catch (e) {
       if (!abortController.signal.aborted) {
         let errorMessage =
-          'An error occurred. Please try again. If the problem persists, please contact the site administrator.'
+          'Fout opgetreden. Probeer het a.u.b. opnieuw. Neem contact op met de helpdesk ICT op nummer 5100 als het probleem zich voor blijft doen.'
         if (result.error?.message) {
           errorMessage = result.error.message
         } else if (typeof result.error === 'string') {
@@ -344,7 +344,7 @@ const Chat = () => {
       setMessages(request.messages)
     }
     let result = {} as ChatResponse
-    var errorResponseMessage = 'Please try again. If the problem persists, please contact the site administrator.'
+    var errorResponseMessage = 'Probeer het a.u.b. opnieuw. Neem contact op met de helpdesk ICT op nummer 5100 als het probleem zich voor blijft doen.'
     try {
       const response = conversationId
         ? await historyGenerate(request, abortController.signal, conversationId)
@@ -836,7 +836,7 @@ const Chat = () => {
                     <div className={styles.chatMessageGpt}>
                       <Answer
                         answer={{
-                          answer: "Generating answer...",
+                          answer: "Antwoord voorbereiden... Een moment geduld a.u.b.",
                           citations: [],
                           generated_chart: null
                         }}
@@ -933,7 +933,7 @@ const Chat = () => {
               </Stack>
               <QuestionInput
                 clearOnSend
-                placeholder="Type a new question..."
+                placeholder="Stel een nieuwe vraag..."
                 disabled={isLoading}
                 onSend={(question, id) => {
                   appStateContext?.state.isCosmosDBAvailable?.cosmosDB
